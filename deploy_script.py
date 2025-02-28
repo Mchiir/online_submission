@@ -5,8 +5,8 @@ import time
 
 # Define the paths
 tomcat_webapp_dir = 'C:/Program Files/Apache Software Foundation/Tomcat 11.0/webapps'  # Update this path to your Tomcat webapps directory
-project_dir = 'F:/GIT-Push/IdeaProjects-JAVA/Projects/Jakarta-Submit'  # Update this to your project directory
-war_filename = 'Jakarta-Submit-1.0-SNAPSHOT.war'  # Update this to your WAR file name
+project_dir = 'F:/GIT-Push/IdeaProjects-JAVA/Projects/online_submission_JavaEE'  # Update this to your project directory
+war_filename = 'home-1.0-SNAPSHOT.war'  # Update this to your WAR file name
 
 # Function to clean the Tomcat webapps directory
 def clean_tomcat_webapp():
