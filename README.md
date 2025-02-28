@@ -28,6 +28,11 @@ Ensure you have the following installed:
 4. **Maven** ([Download](https://maven.apache.org/download.cgi))
 5. **Python 3.7+** (for deployment script)
 
+---
+
+6. **GroupID as "rca"**
+7. **ArtifactID as "home"**
+
 ### 🚀 **Installation & Setup**
 
 1. **Clone the repository:**
