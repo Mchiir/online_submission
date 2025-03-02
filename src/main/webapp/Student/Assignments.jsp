@@ -61,25 +61,25 @@
     <section class="flex flex-col sticky top-[100px]  ">
         <ul class="flex flex-col gap-5 items-start justify-start">
             <li>
-                <a href="${pageContext.request.contextPath}/Student/Home.jsp" class="flex items-center gap-5 bg-gray-100 rounded-md px-5 py-2 text-black text-sm">
+                <a href="${pageContext.request.contextPath}/Student/Home.jsp" class="flex items-center gap-5 bg-white rounded-md px-8 py-2 text-black text-sm">
                     <img src="./images/logo.png" alt="logo" class="w-5 h-5"/>
                     <p class="text-black text-sm">Dashboard</p>
                 </a>
             </li>
             <li>
-                <a href="${pageContext.request.contextPath}/Student/Assignments.jsp" class="flex items-center gap-5 bg-white rounded-md px-5 py-2 text-black text-sm">
+                <a href="${pageContext.request.contextPath}/Student/Assignments.jsp" class="flex items-center gap-5 bg-gray-100 rounded-md px-8 py-2 text-black text-sm">
                     <img src="./images/logo.png" alt="logo" class="w-5 h-5"/>
                     <p class="text-black text-sm">Assignments</p>
                 </a>
             </li>
             <li>
-                <a href="#" class="flex items-center gap-5 bg-white rounded-md px-5 py-2 text-black text-sm">
+                <a href="${pageContext.request.contextPath}/Student/profile.jsp" class="flex items-center gap-5 bg-white rounded-md px-8 py-2 text-black text-sm">
                     <img src="./images/logo.png" alt="logo" class="w-5 h-5"/>
                     <p class="text-black text-sm">Profile</p>
                 </a>
             </li>
             <li>
-                <a href="#" class="flex items-center gap-5 bg-white rounded-md px-5 py-2 text-black text-sm">
+                <a href="${pageContext.request.contextPath}/Student/Notification.jsp" class="flex items-center gap-5 bg-white rounded-md px-8 py-2 text-black text-sm">
                     <img src="./images/logo.png" alt="logo" class="w-5 h-5"/>
                     <p class="text-black text-sm">Notifications</p>
                 </a>
@@ -97,7 +97,7 @@
         <section>
 
             <!-- Sorting and Filtering Section -->
-            <div class="flex flex-row-reverse gap-6 px-10 py-4 shadow-sm relative">
+            <div class="flex flex-row-reverse gap-6 px-10 py-4  relative">
                 <!-- Sort By Dropdown -->
                 <div class="relative">
                     <button onclick="toggleDropdown('sortDropdown')" class="px-4 py-2 bg-gray-800 text-white rounded-md shadow-md hover:bg-gray-700 transition">
@@ -128,8 +128,8 @@
             </div>
         </section>
 
-        <main class="pt-10 pl-10">
-            <div class="grid grid-cols-3 gap-y-8">
+        <main class="pt-10 pl-10 w-full">
+            <div class="flex flex-wrap w-full gap-y-5  items-start justify-between">
 
                 <div class="flex items-start justify-start flex-wrap">
                     <div class="flex flex-col items-center px-5 py-5 gap-5 w-[150px] h-[150px] rounded-md bg-white shadow-md">
@@ -151,7 +151,7 @@
                             <p class="text-sm text-gray-700">Submission:12-February-2024</p>
                             <div class="px-5 py-2 rounded-lg bg-gray-100 text-sm text-black flex items-center justify-center">Pending</div>
                         </div>
-                        <button class="flex items-center justify-center w-full px-5 py-2 text-sm bg-gray-800 rounded-md text-white">Submit Assignment</button>
+                        <a href="SubmitAssignment.jsp" class="flex items-center justify-center w-full px-5 py-2 text-sm bg-gray-800 rounded-md text-white">Submit Assignment</a>
                     </div>
                 </div>
 
