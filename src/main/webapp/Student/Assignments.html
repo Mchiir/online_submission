@@ -1,30 +1,9 @@
-<%@ page import="java.util.HashMap" %>
-<%@ page import="java.util.List" %>
-<%@ page import="java.util.ArrayList" %>
-<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Title</title>
     <!-- Correct Tailwind CSS CDN link -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-
-    <%
-        // Define static assignments
-        List<HashMap<String, Object>> assignments = new ArrayList<>();
-
-        for (int i = 1; i <= 4; i++) {
-            HashMap<String, Object> assignment = new HashMap<>();
-            assignment.put("title", "Online Submission Work " + i);
-            assignment.put("subject", "Java");
-            assignment.put("submissionDate", "12-February-2024");
-            assignment.put("status", "Pending");
-            assignments.add(assignment);
-        }
-
-        // Set assignments in pageContext
-        pageContext.setAttribute("assignments", assignments);
-    %>
 
     <script>
         // Function to update the date and time every second
@@ -62,12 +41,6 @@
                 });
             }
         });
-
-        function submitForm(action, criteria) {
-            document.getElementById('action').value = action;
-            document.getElementById('criteria').value = criteria;
-            document.getElementById('sortFilterForm').submit();
-        }
     </script>
 </head>
 <body class="flex flex-col w-full">
@@ -85,29 +58,30 @@
 </section>
 
 <section class="flex flex-row gap-10 px-10 py-3 flex-grow">
+    
     <!-- Sidebar with sticky positioning and full screen height -->
-    <section class="flex flex-col sticky top-[100px]  ">
+    <section class="flex flex-col sticky top-[100px] border-2">
         <ul class="flex flex-col gap-5 items-start justify-start">
             <li>
-                <a href="${pageContext.request.contextPath}/Student/Home.jsp" class="flex items-center gap-5 bg-white rounded-md px-8 py-2 text-black text-sm">
+                <a href="${pageContext.request.contextPath}/Student/Home.jsp" class="flex items-center gap-5 bg-gray-100 rounded-md px-5 py-2 text-black text-sm">
                     <img src="./images/logo.png" alt="logo" class="w-5 h-5"/>
                     <p class="text-black text-sm">Dashboard</p>
                 </a>
             </li>
             <li>
-                <a href="${pageContext.request.contextPath}/Student/Assignments.jsp" class="flex items-center gap-5 bg-gray-100 rounded-md px-8 py-2 text-black text-sm">
+                <a href="${pageContext.request.contextPath}/Student/Assignments.jsp" class="flex items-center gap-5 bg-white rounded-md px-5 py-2 text-black text-sm">
                     <img src="./images/logo.png" alt="logo" class="w-5 h-5"/>
                     <p class="text-black text-sm">Assignments</p>
                 </a>
             </li>
             <li>
-                <a href="${pageContext.request.contextPath}/Student/profile.jsp" class="flex items-center gap-5 bg-white rounded-md px-8 py-2 text-black text-sm">
+                <a href="#" class="flex items-center gap-5 bg-white rounded-md px-5 py-2 text-black text-sm">
                     <img src="./images/logo.png" alt="logo" class="w-5 h-5"/>
                     <p class="text-black text-sm">Profile</p>
                 </a>
             </li>
             <li>
-                <a href="${pageContext.request.contextPath}/Student/Notification.jsp" class="flex items-center gap-5 bg-white rounded-md px-8 py-2 text-black text-sm">
+                <a href="#" class="flex items-center gap-5 bg-white rounded-md px-5 py-2 text-black text-sm">
                     <img src="./images/logo.png" alt="logo" class="w-5 h-5"/>
                     <p class="text-black text-sm">Notifications</p>
                 </a>
@@ -122,14 +96,10 @@
         </div>
 
 
-        <!-- Sorting and Filtering Section -->
         <section>
-            <div class="flex flex-row-reverse gap-6 px-10 py-4 relative">
-                <form id="sortFilterForm" action="${pageContext.request.contextPath}/AssignmentServlet" method="POST">
-                    <input type="hidden" name="action" id="action" value="">
-                    <input type="hidden" name="criteria" id="criteria" value="">
-                </form>
 
+            <!-- Sorting and Filtering Section -->
+            <div class="flex flex-row-reverse gap-6 px-10 py-4 shadow-sm relative">
                 <!-- Sort By Dropdown -->
                 <div class="relative">
                     <button onclick="toggleDropdown('sortDropdown')" class="px-4 py-2 bg-gray-800 text-white rounded-md shadow-md hover:bg-gray-700 transition">
@@ -137,9 +107,9 @@
                     </button>
                     <div id="sortDropdown" class="absolute mt-2 w-40 bg-white shadow-md rounded-md hidden">
                         <ul class="text-sm text-gray-700">
-                            <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer" onclick="submitForm('sort', 'latest')">Latest</li>
-                            <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer" onclick="submitForm('sort', 'completed')">Completed</li>
-                            <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer" onclick="submitForm('sort', 'alphabetical')">A-Z</li>
+                            <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Date</li>
+                            <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Status</li>
+                            <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Alphabetical</li>
                         </ul>
                     </div>
                 </div>
@@ -151,38 +121,65 @@
                     </button>
                     <div id="filterDropdown" class="absolute mt-2 w-40 bg-white shadow-md rounded-md hidden">
                         <ul class="text-sm text-gray-700">
-                            <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer" onclick="submitForm('filter', 'completed')">Completed</li>
-                            <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer" onclick="submitForm('filter', 'pending')">Pending</li>
-                            <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer" onclick="submitForm('filter', 'overdue')">Overdue</li>
+                            <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Completed</li>
+                            <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Pending</li>
+                            <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Overdue</li>
                         </ul>
                     </div>
                 </div>
             </div>
         </section>
 
-        <main class="pt-10 pl-10 w-full">
-            <div class="flex flex-wrap w-full gap-y-5 items-start justify-between">
+        <main class="pt-10 pl-10">
+            <div class="grid grid-cols-3 gap-y-8">
 
-                <c:choose>
-                    <c:when test="${not empty assignments}">
-                        <c:forEach var="assignment" items="${assignments}">
-                            <div class="flex items-start justify-start flex-wrap">
-                                <div class="flex flex-col items-center px-5 py-5 gap-5 w-[200px] h-[200px] rounded-md bg-white shadow-md">
-                                    <p class="text-sm font-medium text-gray-800">${assignment.title}</p>
-                                    <p class="text-sm text-gray-600">${assignment.subject}</p>
-                                    <div class="items-center flex flex-row justify-center gap-5 w-full">
-                                        <p class="text-sm text-gray-700">Submission: ${assignment.submissionDate}</p>
-                                        <div class="px-5 py-2 rounded-lg bg-gray-100 text-sm text-black flex items-center justify-center">${assignment.status}</div>
-                                    </div>
-                                    <a href="SubmitAssignment.jsp" class="flex items-center justify-center w-full px-5 py-2 text-sm bg-gray-800 rounded-md text-white">Submit Assignment</a>
-                                </div>
-                            </div>
-                        </c:forEach>
-                    </c:when>
-                    <c:otherwise>
-                        <p class="text-lg text-gray-700">No assignments available.</p>
-                    </c:otherwise>
-                </c:choose>
+                <div class="flex items-start justify-start flex-wrap">
+                    <div class="flex flex-col items-center px-5 py-5 gap-5 w-[150px] h-[150px] rounded-md bg-white shadow-md">
+                        <p class="text-sm font-medium text-gray-800">Online Submission Work</p>
+                        <p class="text-sm text-gray-600">Java</p>
+                        <div class="items-center flex flex-row justify-center gap-5 w-full">
+                            <p class="text-sm text-gray-700">Submission:12-February-2024</p>
+                            <div class="px-5 py-2 rounded-lg bg-gray-100 text-sm text-black flex items-center justify-center">Pending</div>
+                        </div>
+                        <button class="flex items-center justify-center w-full px-5 py-2 text-sm bg-gray-800 rounded-md text-white">Submit Assignment</button>
+                    </div>
+                </div>
+
+                <div class="flex items-start justify-start flex-wrap">
+                    <div class="flex flex-col items-center px-5 py-5 gap-5 w-[150px] h-[150px] rounded-md bg-white shadow-md">
+                        <p class="text-sm font-medium text-gray-800">Online Submission Work</p>
+                        <p class="text-sm text-gray-600">Java</p>
+                        <div class="items-center flex flex-row justify-center gap-5 w-full">
+                            <p class="text-sm text-gray-700">Submission:12-February-2024</p>
+                            <div class="px-5 py-2 rounded-lg bg-gray-100 text-sm text-black flex items-center justify-center">Pending</div>
+                        </div>
+                        <button class="flex items-center justify-center w-full px-5 py-2 text-sm bg-gray-800 rounded-md text-white">Submit Assignment</button>
+                    </div>
+                </div>
+
+                <div class="flex items-start justify-start flex-wrap">
+                    <div class="flex flex-col items-center px-5 py-5 gap-5 w-[150px] h-[150px] rounded-md bg-white shadow-md">
+                        <p class="text-sm font-medium text-gray-800">Online Submission Work</p>
+                        <p class="text-sm text-gray-600">Java</p>
+                        <div class="items-center flex flex-row justify-center gap-5 w-full">
+                            <p class="text-sm text-gray-700">Submission:12-February-2024</p>
+                            <div class="px-5 py-2 rounded-lg bg-gray-100 text-sm text-black flex items-center justify-center">Pending</div>
+                        </div>
+                        <button class="flex items-center justify-center w-full px-5 py-2 text-sm bg-gray-800 rounded-md text-white">Submit Assignment</button>
+                    </div>
+                </div>
+
+                <div class="flex items-start justify-start flex-wrap">
+                    <div class="flex flex-col items-center px-5 py-5 gap-5 w-[150px] h-[150px] rounded-md bg-white shadow-md">
+                        <p class="text-sm font-medium text-gray-800">Online Submission Work</p>
+                        <p class="text-sm text-gray-600">Java</p>
+                        <div class="items-center flex flex-row justify-center gap-5 w-full">
+                            <p class="text-sm text-gray-700">Submission:12-February-2024</p>
+                            <div class="px-5 py-2 rounded-lg bg-gray-100 text-sm text-black flex items-center justify-center">Pending</div>
+                        </div>
+                        <button class="flex items-center justify-center w-full px-5 py-2 text-sm bg-gray-800 rounded-md text-white">Submit Assignment</button>
+                    </div>
+                </div>
 
             </div>
         </main>

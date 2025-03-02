@@ -41,6 +41,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Notifications</title>
@@ -66,13 +67,13 @@
     <section class="w-64 fixed left-0 top-[84px] h-[calc(100vh-84px)] overflow-y-auto">
         <ul class="flex flex-col gap-2 p-5">
             <li>
-                <a href="#" class="flex items-center gap-4 rounded-md px-4 py-2.5 text-sm hover:bg-gray-100">
+                <a href="${pageContext.request.contextPath}/Student/Home.jsp" class="flex items-center gap-4 rounded-md px-4 py-2.5 text-sm hover:bg-gray-100">
                     <img src="./images/logo.png" alt="logo" class="w-5 h-5"/>
                     Dashboard
                 </a>
             </li>
             <li>
-                <a href="#" class="flex items-center gap-4 rounded-md px-4 py-2.5 text-sm hover:bg-gray-100">
+                <a href="${pageContext.request.contextPath}/Student/Assignments.jsp" class="flex items-center gap-4 rounded-md px-4 py-2.5 text-sm hover:bg-gray-100">
                     <img src="./images/logo.png" alt="logo" class="w-5 h-5"/>
                     Assignments
                 </a>

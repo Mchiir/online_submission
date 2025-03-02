@@ -47,7 +47,7 @@
     <section class="flex flex-col sticky top-[100px]  ">
         <ul class="flex flex-col gap-5 items-start justify-start">
             <li>
-                <a href="#" class="flex items-center gap-5 bg-gray-100 rounded-md px-8 py-2 text-black text-sm">
+                <a href="${pageContext.request.contextPath}/Student/Home.jsp" class="flex items-center gap-5 bg-gray-100 rounded-md px-8 py-2 text-black text-sm">
                     <img src="./images/logo.png" alt="logo" class="w-5 h-5"/>
                     <p class="text-black text-sm">Dashboard</p>
                 </a>
